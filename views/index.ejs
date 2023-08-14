@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <% if (weatherData) { %>
+            <div id="weatherResult">
+                <h2>Weather in <%= weatherData.name %></h2>
+                <p>Temperature: <%= weatherData.main.temp %>°C</p>
+                <p>Weather: <%= weatherData.weather[0].description %></p>
+                <img src="http://openweathermap.org/img/w/<%= weatherData.weather[0].icon %>.png" alt="Weather Icon">
+            </div>
+        <% } else if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+    </div>
+</body>
+</html>
